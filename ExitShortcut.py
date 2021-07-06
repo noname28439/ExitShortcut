@@ -30,16 +30,16 @@ def check():
     print("Last: "+str(last))
 
     #keywords on which functions are triggered
-    if last.startswith("exit"):
+    if last.endswith("exit"):
         kill_active_frame(win32gui.GetForegroundWindow())
     
-    if last.startswith("hide"):
+    if last.endswith("hide"):
         hide_active_frame(win32gui.GetForegroundWindow())
 
-    if last.startswith("show"):
+    if last.endswith("show"):
         reveal_all_hidden_frames()
     
-    if last.startswith("schabernack"):
+    if last.endswith("schabernack"):
         print("Schabernack wurde erfolgreich erkannt!")
 
 def on_press(key):
