@@ -2,7 +2,9 @@
 Just a simple Script to let you type short commands in any window
 
 # Intallation:
-Just install Python3 with Pynput
+1. install Python3 (from the official python page)
+2. Install pip (Download & Run get-pip.py that you will find when searching <a href='https://www.google.com/search?q=python+install+pip&rlz=1C1ONGR_deDE959DE959&oq=python+install+pip&aqs=chrome..69i57j35i39j0i20i263j0l2j0i20i263j0l4.329j0j7&sourceid=chrome&ie=UTF-8'>"python install pip"</a> on Google)
+3. install Pynput and pywin32 with pip (Run "pip install pynput" and "pip install pywin32")
 
 # Usage:
 1. Run the ExitShortcut.py Script
@@ -13,3 +15,6 @@ Just install Python3 with Pynput
 - hide: Hide the active Frame
 - show: Reopen all hidden Frames
 - exit: Close the active Frame
+
+## Warning:
+I think this only works on Windows... But just try it out!
