@@ -2,6 +2,9 @@ from pynput import keyboard
 import win32gui
 import win32con
 
+#Settings:
+MAX_KEY_SAVES = 20  #Amount of last typed keys saved in the list (Keywords can never be longer than this number)
+
 hidden_frames = []
 
 def kill_active_frame(win):
@@ -26,15 +29,18 @@ def check():
         last += c
     print("Last: "+str(last))
 
-    #functions
-    if last == "exit":
+    #keywords on which functions are triggered
+    if last.startswith("exit"):
         kill_active_frame(win32gui.GetForegroundWindow())
     
-    if last == "hide":
+    if last.startswith("hide"):
         hide_active_frame(win32gui.GetForegroundWindow())
 
-    if last == "show":
+    if last.startswith("show"):
         reveal_all_hidden_frames()
+    
+    if last.startswith("schabernack"):
+        print("Schabernack wurde erfolgreich erkannt!")
 
 def on_press(key):
     currently_down.append(key)
@@ -46,7 +52,7 @@ def on_press(key):
     global lastKeys
     lastKeys.append(str(key))
     #print(f"{key} --> {lastKeys}")    #shows key inserts
-    if len(lastKeys)>4:
+    if len(lastKeys)>MAX_KEY_SAVES:
         lastKeys.pop(0)
     
 def on_release(key):
@@ -56,7 +62,7 @@ def on_release(key):
 keyListener = keyboard.Listener(on_press=on_press, on_release=on_release)
 keyListener.start()
 
-input("Press Enter to quit")
+input("Press Enter to quit\n")
 quit()
 
 
