@@ -17,6 +17,13 @@ def hide_active_frame(win):
 def reveal_all_hidden_frames():
     for frame in hidden_frames:
         win32gui.ShowWindow(frame, win32con.SW_SHOWNORMAL)
+    while len(hidden_frames)>0:
+        hidden_frames.pop(0)
+
+def reveal_last_hidden_frame():
+    frame = hidden_frames[-1]
+    win32gui.ShowWindow(frame, win32con.SW_SHOWNORMAL)
+    hidden_frames.remove(frame)
 
 lastKeys = []
 
@@ -36,8 +43,11 @@ def check():
     if last.endswith("hide"):
         hide_active_frame(win32gui.GetForegroundWindow())
 
-    if last.endswith("show"):
+    if last.endswith("showall"):
         reveal_all_hidden_frames()
+    
+    if last.endswith("show"):
+        reveal_last_hidden_frame()
     
     if last.endswith("schabernack"):
         print("Schabernack wurde erfolgreich erkannt!")

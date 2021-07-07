@@ -1,5 +1,5 @@
 # ExitShortcut
-Just a simple Script to let you type short commands in any window
+Just a simple script to let you type short commands in any window
 
 # Intallation:
 1. install Python3 (from the official python page)
@@ -8,13 +8,14 @@ Just a simple Script to let you type short commands in any window
 
 # Usage:
 1. Run the ExitShortcut.py Script
-2. Just type whatever command you want to use in any Frame (not the command Prompt)
+2. Just type whatever command you want to use in any frame (not the command Prompt)
 3. Press CTRL+SHIFT+ENTER to run the Command
 
 # Commands:
-- hide: Hide the active Frame
-- show: Reopen all hidden Frames
-- exit: Close the active Frame
+- hide: Hide the active frame
+- show: Reopen the last hidden frames (Press CTRL+SHIFT+ENTER multiple times to reopen all)
+- showall: Reopen all hidden frames
+- exit: Close the active frame
 
 ## Warning:
 I think this only works on Windows... But just try it out!
