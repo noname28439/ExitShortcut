@@ -21,9 +21,10 @@ def reveal_all_hidden_frames():
         hidden_frames.pop(0)
 
 def reveal_last_hidden_frame():
-    frame = hidden_frames[-1]
-    win32gui.ShowWindow(frame, win32con.SW_SHOWNORMAL)
-    hidden_frames.remove(frame)
+    if len(hidden_frames)>0:
+        frame = hidden_frames[-1]
+        win32gui.ShowWindow(frame, win32con.SW_SHOWNORMAL)
+        hidden_frames.remove(frame)
 
 lastKeys = []
 
