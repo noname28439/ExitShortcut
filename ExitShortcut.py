@@ -1,6 +1,7 @@
 from pynput import keyboard
 import win32gui
 import win32con
+import AudioClipper
 
 #Settings:
 MAX_KEY_SAVES = 20  #Amount of last typed keys saved in the list (Keywords can never be longer than this number)
@@ -49,6 +50,9 @@ def check():
     
     if last.endswith("show"):
         reveal_last_hidden_frame()
+    
+    if last.endswith("audioclip") or last.endswith("ac"):
+        AudioClipper.clip()
     
     if last.endswith("schabernack"):
         print("Schabernack wurde erfolgreich erkannt!")
