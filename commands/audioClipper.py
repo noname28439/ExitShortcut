@@ -1,13 +1,20 @@
+from concurrent.futures import thread
+import os
+from pkg_resources import cleanup_resources
 import pyaudio
 import wave
 from threading import Thread
 from datetime import datetime
 from win10toast import ToastNotifier
 
+CLIP_DIR = "./AudioClips/"
+
 toast = ToastNotifier()
+if not os.path.exists(CLIP_DIR): os.mkdir(CLIP_DIR)
 
 def notitfy(header, text):
-    toast.show_toast(header,text,duration=20)
+    toast.show_toast(header,text,duration=2, threaded=True)
+    print("fin2")
 
 
 CHUNK = 1024
@@ -60,8 +67,10 @@ def clip():
     for frameData in frameList:
         for data in frameData:
             calcFrames.append(data)
-    save_file(calcFrames, "./AudioClip-"+current_date()+".wav")
+    save_file(calcFrames, "./AudioClips/AudioClip-"+current_date()+".wav")
+    print("fin1")
     notitfy("AudioClipper", "Clip successfully created")
+    
 
 
 def save_file(frms, path):
@@ -77,6 +86,11 @@ t = Thread(target=thr_listener)
 t.daemon = True
 t.start()
 
+def cmd_audioclip():
+    clip()
+
+def cmd_ac():
+    clip()
 
 # stream.stop_stream()
 # stream.close()
